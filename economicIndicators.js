@@ -17,6 +17,8 @@ let currentWilshire;
 let current2Year;
 let current10Year;
 let currentTreasurySpread;
+let currentBitcoin;
+let currentEtherum;
 
 fred.getSeriesObservations({series_id: 'WILL5000INDFC'},function(error, result){
 	let string = JSON.stringify(result);
@@ -36,18 +38,32 @@ fred.getSeriesObservations({series_id:'GDP'},function(error,result){
 fred.getSeriesObservations({series_id:'DGS2'},function(error,result){
 	let string = JSON.stringify(result);
 	current2Year = string.slice(string.length-8,string.length-4);
-	console.log("2 Year Treasury Yield Spread(Monthly)"+current2Year);
+	console.log("2 Year Treasury Yield Spread(Monthly) = "+current2Year);
 });
 
 fred.getSeriesObservations({series_id:'GS10'},function(error,result){
 	let string = JSON.stringify(result);
 	current10Year = string.slice(string.length-8, string.length-4);
-	console.log("10-Year Treaury Yield(Monthly)"+current10Year);
+	console.log("10-Year Treaury Yield(Monthly) = "+current10Year);
 });
 
 //Daily Updated 10year - 2 year Yield Constant Maturity
 fred.getSeriesObservations({series_id:'T10Y2Y'},function(error,result){
 	let string = JSON.stringify(result);
 	currentTreasurySpread = string.slice(string.length-8, string.length-4);
-	console.log("10-2 Year Treasury Yield Spread(Daily)"+currentTreasurySpread);
+	console.log("10-2 Year Treasury Yield Spread(Daily) = "+currentTreasurySpread);
+});
+
+//Bitcoin Price
+fred.getSeriesObservations({series_id:'CBBTCUSD'},function(error,result){
+	let string = JSON.stringify(result);
+	currentBitcoin = string.slice(string.length-10, string.length-4);
+	console.log("Bitcoin Price(Daily) = "+currentBitcoin);
+});
+
+//Etherum Price
+fred.getSeriesObservations({series_id:'CBETHUSD'},function(error,result){
+	let string = JSON.stringify(result);
+	currentEtherum = string.slice(string.length-10, string.length-4);
+	console.log("Etherum Price(Daily) = "+currentEtherum);
 });
