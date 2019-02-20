@@ -57,7 +57,7 @@ fred.getSeriesObservations({series_id:'T10Y2Y'},function(error,result){
 //Bitcoin Price
 fred.getSeriesObservations({series_id:'CBBTCUSD'},function(error,result){
 	let string = JSON.stringify(result);
-	currentBitcoin = string.slice(string.length-10, string.length-4);
+	currentBitcoin = string.slice(string.length-11, string.length-4);
 	console.log("Bitcoin Price(Daily) = "+currentBitcoin);
 });
 
